@@ -63,8 +63,8 @@ function App() {
               <input type="text" className="popup__name-field" id="About" name="jobInput" placeholder="О себе" minlength="2" maxlength="200" required />
               <span id="About-error" className="popup__name-field-error"></span>
             </fieldset>
-            <button className="popup__save-button" type="submit">Сохранить</button>
           </>}
+          text={"Сохранить"}
           isOpen={isEditProfilePopupOpen}
           onClose={closeAllPopups}
         />            
@@ -75,8 +75,8 @@ function App() {
               <input type="url" className="popup__name-field" id="linkAva" name="linkAva" placeholder="Ссылка на аватар" required />
               <span id="linkAva-error" className="popup__name-field-error"></span>
             </fieldset>
-            <button className="popup__save-button" type="submit">Сохранить</button> 
           </>}
+          text={"Сохранить"}
           isOpen={isEditAvatarPopupOpen}
           onClose={closeAllPopups}
         />
@@ -88,14 +88,12 @@ function App() {
               <input type="url" className="popup__name-field" id="link" name="linkPic" placeholder="Ссылка на картинку" required />
               <span id="link-error" className="popup__name-field-error"></span>
             </fieldset>
-            <button className="popup__save-button" type="submit">Создать</button> 
           </>}
+          text={"Создать"}
           isOpen={isAddPlacePopupOpen}
           onClose={closeAllPopups}
         />
-        < PopupWithForm title="Вы уверены?" name="delete-" children=
-          { <button className="popup__save-button" type="submit">Да</button> }
-        />
+        < PopupWithForm title="Вы уверены?" name="delete-" text={"Да"}/>
         < ImagePopup name="pic-" isOpen={selectedCard} onClose={closeAllPopups} card={gettingCard}
         /> 
               
