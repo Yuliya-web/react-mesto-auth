@@ -42,6 +42,7 @@
 @import url("./blocks/element/_non-display/element_non-display.css");
 @import url("./blocks/element/__image/element__image.css");
 @import url("./blocks/element/__delete-card/element__delete-card.css");
+@import url("./blocks/element/__delete-card/_non-visible/element__delete-card_non-visible.css");
 @import url("./blocks/element/__text-and-button/element__text-and-button.css");
 @import url("./blocks/element/__title/element__title.css");
 @import url("./blocks/element/__like/element__like.css");

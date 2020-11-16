@@ -1,5 +1,3 @@
-
-
 export const savingText = (isLoading, button, buttonText) => {
   if(isLoading){
     button.textContent = 'Сохранение...';

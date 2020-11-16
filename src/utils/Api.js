@@ -26,7 +26,6 @@ class Api {
     }).then(res => this._getResponseData(res));
   }
 
-
   editProf({ name, about }) {
     return fetch(`${this._url}users/me`, {
       method: 'PATCH',
@@ -54,22 +53,22 @@ class Api {
       method: 'DELETE',
       headers: this._headers,
       }).then(res => this._getResponseData(res));
-   }
- 
-
-  putLike(item) {
-    return fetch(`${this._url}cards/likes/`+item._id, {
-      method: 'PUT',
-      headers: this._headers
-    }).then(res => this._getResponseData(res));
   }
 
-  delLike(item) {
-    return fetch(`${this._url}cards/likes/`+item._id, {
-      method: 'DELETE',
-      headers: this._headers
-    }).then(res => this._getResponseData(res));
-  }
+  changeLikeCardStatus(card, isLiked) {
+		if (isLiked) {
+      return fetch(`${this._url}cards/likes/${card._id}`, {
+        method: 'PUT',
+        headers: this._headers
+      }).then(res => this._getResponseData(res));
+		}
+		else {
+      return fetch(`${this._url}cards/likes/${card._id}`, {
+        method: 'DELETE',
+        headers: this._headers
+      }).then(res => this._getResponseData(res));
+		}
+	}
 
   editAvatar({ avatar }) {
     return fetch(`${this._url}users/me/avatar`, {
