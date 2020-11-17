@@ -5,7 +5,7 @@ export function PopupWithForm(props) {
 
   return (    
     <section className={`${props.name}popup`+ openedPopup} >
-      <form className="popup__container" name={props.name} onSubmit={props.onSubmit} novalidate>
+      <form className="popup__container" name={props.name} onSubmit={props.onSubmit} noValidate>
         <button className="popup__close-button" type="button" onClick={props.onClose}></button> 
         <h3 className="popup__title" >{props.title}</h3>
         {props.children}

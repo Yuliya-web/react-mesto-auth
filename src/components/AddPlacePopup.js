@@ -25,7 +25,7 @@ export function AddPlacePopup(props) {
     < PopupWithForm title="Новое место" name="add-" children=
     {<>
       <fieldset className="popup__fieldset">
-        <input type="text" className="popup__name-field" id="namePic" name="namePic" placeholder="Название" minlength="1" maxlength="30" required  value={name} onChange={handleChangeName} />
+        <input type="text" className="popup__name-field" id="namePic" name="namePic" placeholder="Название" minLength="1" maxLength="30" required  value={name} onChange={handleChangeName} />
         <span id="namePic-error" className="popup__name-field-error" ></span>
         <input type="url" className="popup__name-field" id="link" name="linkPic" placeholder="Ссылка на картинку" required  value={link} onChange={handleChangeLink}/>
         <span id="link-error" className="popup__name-field-error"></span>

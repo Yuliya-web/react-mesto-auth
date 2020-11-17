@@ -1,4 +1,3 @@
-import '../index.css';
 import React from 'react';
 import {Header} from './Header.js';
 import {Main} from './Main.js';
@@ -65,26 +64,22 @@ function App() {
   function handleUpdateUser({name, about}) {
     apiData.editProf({name, about})
     .then((userData) => {  
-      setCurrentUser(userData);  
+      setCurrentUser(userData); 
+      closeAllPopups(); 
     })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        closeAllPopups();
       })
   }
 
   function handleUpdateAvatar({avatar}) {
     apiData.editAvatar({ avatar })
     .then((userData) => {  
-      setCurrentUser(userData);  
+      setCurrentUser(userData); 
+      closeAllPopups(); 
     })
       .catch((err) => {
         console.log(err);
-      })
-      .finally(() => {
-        closeAllPopups();
       })
   }
 
@@ -122,49 +117,30 @@ function App() {
     apiData.addNewCard({ name, link})
     .then((newCard) => {
       setCards([newCard, ...cards]); 
+      closeAllPopups();
     })
       .catch((err) => {
         console.log(`Ошибка: ${err}`);
       })
-        .finally(() => {
-          closeAllPopups();
-        })
   } 
 
-  return (
+  return (         
     <CurrentUserContext.Provider value={currentUser}>
-    <div>        
-      <html lang="ru">
-      <head>
-        <meta charset="UTF-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-        <meta name="description" content="Какие места можно посмотреть в России: красивые места страны, в которой мы живем." />
-        <meta name="keywords" content="Россия, путешествия, города" />
-        <title>Mesto</title>
-        <link href="main.css" rel="stylesheet" ></link>      
-      </head>
-      <body>
         
-        <div className="page">           
-          < Header />
-          < Main onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete}
-          />
-          < Footer />            
-        </div>  
+      <div className="page">           
+        < Header />
+        < Main onEditAvatar={handleEditAvatarClick} onEditProfile={handleEditProfileClick} onAddPlace={handleAddPlaceClick} onCardClick={handleCardClick} cards={cards} onCardLike={handleCardLike} onCardDelete={handleCardDelete} />
+        < Footer />            
+      </div>  
 
-        <EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />           
-        <EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar}/>
-        <AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit}/>
+      < EditProfilePopup isOpen={isEditProfilePopupOpen} onClose={closeAllPopups} onUpdateUser={handleUpdateUser} />           
+      < EditAvatarPopup isOpen={isEditAvatarPopupOpen} onClose={closeAllPopups} onUpdateAvatar={handleUpdateAvatar} />
+      < AddPlacePopup isOpen={isAddPlacePopupOpen} onClose={closeAllPopups} onAddPlace={handleAddPlaceSubmit} />
 
-        < PopupWithForm title="Вы уверены?" name="delete-" text={"Да"}/>
-        < ImagePopup name="pic-" isOpen={selectedCard} onClose={closeAllPopups} card={gettingCard}
-        /> 
-              
-        <script src="main.js"></script>
-      </body> 
-      </html>
-    </div> 
-    </CurrentUserContext.Provider>
+      < PopupWithForm title="Вы уверены?" name="delete-" text={"Да"}/>
+      < ImagePopup name="pic-" isOpen={selectedCard} onClose={closeAllPopups} card={gettingCard} /> 
+           
+    </CurrentUserContext.Provider>    
   );
 }
 

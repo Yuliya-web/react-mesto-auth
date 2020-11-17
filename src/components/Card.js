@@ -35,7 +35,7 @@ export function Card(props) {
   return (
     <>
       <div className="element" >
-        <img className="element__image" alt="Место" src={props.card.link} onClick={handleCardClick}/>
+        <img className="element__image" alt={props.card.name} src={props.card.link} onClick={handleCardClick}/>
         <button  className={cardDeleteButtonClassName} type="button" id="delete" onClick={handleDeleteClick}></button>
         <div className="element__text-and-button">         
           <p className="element__title">{props.card.name}</p>

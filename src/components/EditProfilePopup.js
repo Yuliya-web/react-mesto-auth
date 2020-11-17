@@ -35,9 +35,9 @@ export function EditProfilePopup(props) {
       title="Редактировать профиль" name="" children=
         {<>
           <fieldset className="popup__fieldset">
-            <input type="text" className="popup__name-field" id="Name" name="nameInput" placeholder="Имя" minlength="2" maxlength="40" required value={name} onChange={handleChangeName}/>
+            <input type="text" className="popup__name-field" id="Name" name="nameInput" placeholder="Имя" minLength="2" maxLength="40" required value={name} onChange={handleChangeName}/>
             <span id="Name-error" className="popup__name-field-error"></span>
-            <input type="text" className="popup__name-field" id="About" name="jobInput" placeholder="О себе" minlength="2" maxlength="200" required value={description} onChange={handleChangeDescription}/>
+            <input type="text" className="popup__name-field" id="About" name="jobInput" placeholder="О себе" minLength="2" maxLength="200" required value={description} onChange={handleChangeDescription}/>
             <span id="About-error" className="popup__name-field-error"></span>
           </fieldset>
         </>}
