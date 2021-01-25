@@ -14,8 +14,8 @@ export function Header(props) {
     <Switch>
       <Route exact path="/">
         <div className="header__info-container">
-            <p className="header__account">{props.userData.email}</p>
-            <Link to="/sign-up" className="header__log-link" onClick={signOut}>Выйти</Link>
+          <p className="header__email">{props.userData.email}</p>
+          <Link to="/sign-up" className="header__log-link" onClick={signOut}>Выйти</Link>
         </div>
       </Route>
       <Route path="/sign-up">

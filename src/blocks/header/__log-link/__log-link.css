@@ -11,8 +11,3 @@
   transition: opacity 0.4s linear;
 }
 
-@media (max-width: 650px) {
-  .header__log-link {
-    right: 27px; 
-  }
-}

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React from 'react';
 import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import {Header} from './Header.js';
@@ -12,7 +13,7 @@ import {Login} from './Login.js';
 import {Register} from './Register.js';
 import {ProtectedRoute} from './ProtectedRoute.js';
 import {InfoTooltip} from './InfoTooltip.js';
-import {apiData} from '../utils/Api.js';
+import {apiData} from '../utils/api';
 import {CurrentUserContext} from '../contexts/CurrentUserContext.js';
 import * as auth from '../utils/auth'
 
@@ -140,14 +141,22 @@ export default function App() {
       })
   } 
 
+  // Вход 
+  const handleLogin = _ => {
+    setIsLoggedIn(true);
+    history.push("/");
+}
+
   // Авторизация
   function handleLoggedIn(email, password) {
     auth.authorize(email, password)
     .then((data) => {
       if (data.token) {
-        setIsLoggedIn(true)
-        history.push('/')
+        localStorage.setItem('token', data.token);
+        handleLogin();
+        setIsLoggedIn(true)        
         handleInfoTooltipOpen()
+        history.push('/')
       } 
     })
     .catch(() => {
@@ -159,10 +168,14 @@ export default function App() {
     auth.register(email, password)
     .then((res) => {
       if (res) {
-        history.push('/sign-in')
+        setIsLoggedIn(true)
+        handleInfoTooltipOpen()
+        history.push('/sign-in')        
       }
     })
-    .catch((err) => console.log(err))
+    .catch(() => {
+      handleInfoTooltipOpen()
+    })
   }
 
   function handleLogOut() {
@@ -174,11 +187,12 @@ export default function App() {
       const jwt = localStorage.getItem('jwt')  
       auth.tokenCheck(jwt)
       .then((res) => {
-          if (res) {
-            setUserData(res.data)
-            setIsLoggedIn(true)
-            history.push('/')
-          }
+        if (res) {
+          setUserData(res.data)
+          setIsLoggedIn(true)
+          handleLogin()
+          history.push('/')
+        }
       })
       .catch((err) => console.log(err))
     }  
@@ -187,7 +201,7 @@ export default function App() {
   // проверим токен
   React.useEffect(() => {
     tokenCheck()
-  });
+  }, []);
 
   return (         
     <CurrentUserContext.Provider value={currentUser}>
@@ -217,7 +231,7 @@ export default function App() {
               />
           </Route>
           <Route path="/">
-            {loggedIn ? <Redirect to="/cards" /> : <Redirect to="/sign-in" />}
+            {loggedIn ? <Redirect to="/" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
 
