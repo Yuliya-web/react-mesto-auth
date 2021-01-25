@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, useHistory } from 'react-router-dom';
+import { Redirect, Route, Switch, useHistory } from 'react-router-dom';
 import {Header} from './Header.js';
 import {Main} from './Main.js';
 import {Footer} from './Footer.js';
@@ -215,6 +215,9 @@ export default function App() {
               <Register
                   handleRegister={handleRegister}
               />
+          </Route>
+          <Route path="/">
+            {loggedIn ? <Redirect to="/cards" /> : <Redirect to="/sign-in" />}
           </Route>
         </Switch>
 
