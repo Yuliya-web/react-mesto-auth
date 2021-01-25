@@ -1,4 +1,4 @@
-# Проект 10: Место
+# Проект 14: Место
 
 ### Описание
 
@@ -6,7 +6,7 @@
 
 **Ссылка на проект в GitHub**
 
-* [Ссылка](https://yuliya-web.github.io/mesto-react/)
+* [Ссылка](https://yuliya-web.github.io/react-mesto-auth/)
 
 **Использованные технологии**
 
